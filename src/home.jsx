@@ -39,7 +39,7 @@ export default function home() {
     return (
         <Container sx={{ backgroundColor: '#F2F3F5' }}>
             <AppBar>
-                <Typography variant="h5" sx={{ flexGrow: 1, padding: 1, backgroundColor: 'white', color: 'black'}}>
+                <Typography variant="h5" sx={{ flexGrow: 1, padding: 1, backgroundColor: '#d74554', color: 'black' }}>
                     {value}
                 </Typography>
             </AppBar>
@@ -71,7 +71,7 @@ export default function home() {
                     </Box>
                     <Grid container spacing={2} alignItems="center">
                         <Grid item xs={12}>
-                            <Card>
+                            <Card sx={{ borderRadius: 5 }}>
                                 <Box align='left' sx={{ m: 2 }}>
                                     <Grid container rowSpacing={2} sx={{ alignItems: 'center' }}>
                                         <Grid item xs={10}>
@@ -90,7 +90,7 @@ export default function home() {
                         </Grid>
 
                         <Grid item xs={6}>
-                            <Card sx={{ width: '100%', height: '100%', mb:5}}>
+                            <Card sx={{ width: '100%', height: '100%', mb: 5, borderRadius: 5 }}>
                                 <CardActionArea href="/earthquake/tohoku_earthquake">
                                     <CardContent>
                                         <img src={HeartRed} height='100' width='100' />
@@ -102,7 +102,7 @@ export default function home() {
                             </Card>
                         </Grid>
                         <Grid item xs={6}>
-                            <Card sx={{ width: '100%', height: '100%', mb:5}}>
+                            <Card sx={{ width: '100%', height: '100%', mb: 5, borderRadius: 5 }}>
                                 <CardActionArea href="/earthquake/111">
                                     <CardContent>
                                         <img src={FirstAidKit} height='100' width='100' />
