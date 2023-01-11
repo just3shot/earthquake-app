@@ -11,10 +11,13 @@ import ReportIcon from '@mui/icons-material/Report';
 import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import FindInPageIcon from '@mui/icons-material/FindInPage';
 
-import EarthquakeImage from './assets/earthquake.jpg';
+import EarthquakeImage from './assets/earthquake4.jpg';
 import EarthquakeImage1 from './assets/earthquake1.jpg';
 import EarthquakeImage2 from './assets/earthquake2.jpg';
+import HeartRed from './assets/heart_red.png';
+import FirstAidKit from './assets/firstaidkit2.png';
 
 export default function home() {
 
@@ -23,85 +26,98 @@ export default function home() {
     const [value, setValue] = React.useState("Dashboard");
     const [data, setData] = useState(null);
 
-    const earthquakeImage = [EarthquakeImage, EarthquakeImage1, EarthquakeImage2];
+    const earthquakeImages = [
+        { image: EarthquakeImage, text: "Earthquakes don't kill people. On the other hand, buildings do." },
+        { image: EarthquakeImage1, text: "Small clusters of earthquakes may be warning sign of larger one to come." },
+        { image: EarthquakeImage2, text: "Bigger earthquakes have more and larger aftershhocks." },
+    ];
 
     function handleClick(directory) {
         navigate(`/earthquake/${directory}`);
     }
 
     return (
-        <Container>
+        <Container sx={{ backgroundColor: '#F2F3F5' }}>
             <AppBar>
-                <Typography variant="h5" sx={{ flexGrow: 1 }}>
+                <Typography variant="h5" sx={{ flexGrow: 1, padding: 1, backgroundColor: 'white', color: 'black'}}>
                     {value}
                 </Typography>
             </AppBar>
             {value === "Dashboard" &&
                 <Box>
-                    <Box sx={{
-                        display: 'flex',
-                        maxWidth: "100vw",
-                        maxHeight: 300,
-                        backgroundColor: 'red',
-                    }}
-                    >
-                        <ImageList sx={{ overflowX: 'scroll' }}>
-                            {earthquakeImage.map((image, index) => (
-                                <ImageListItem key={index}>
-                                    <img src={image} alt="earthquake image" />
-                                </ImageListItem>
-                            ))}
-                        </ImageList>
+                    <Box sx={{ display: 'flex', overflowX: 'scroll', mb: 5, width: '80vw' }}>
+                        {earthquakeImages.map((earthquake) => (
+                            <Card sx={{ flexShrink: 0, maxWidth: '100%', borderRadius: 5, position: 'relative' }}>
+                                <CardMedia
+                                    component="img"
+                                    alt="earthquake"
+                                    src={earthquake.image}
+                                    width='100%'
+                                />
+                                <Box
+                                    sx={{
+                                        position: 'absolute',
+                                        bottom: '30%',
+                                        left: 0,
+                                        width: '100%',
+                                        color: 'white',
+                                    }}
+                                >
+                                    <Typography variant="h5">Earthquake Prediction</Typography>
+                                    <Typography variant="body2">{earthquake.text}</Typography>
+                                </Box>
+                            </Card>
+                        ))}
                     </Box>
-                    <Card sx={{ maxWidth: 500, mb: 5 }}>
-                        <CardMedia
-                            component="img"
-                            alt="earthquake"
-                            height="140"
-                            image={EarthquakeImage}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Earthquake
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Earthquake Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed urna est, lobortis quis eros a, viverra eleifend felis. In pellentesque tellus eu venenatis sodales. Suspendisse dignissim venenatis sollicitudin. Etiam a feugiat ex. Nam aliquet aliquet massa eu eleifend. Pellentesque suscipit quam eget turpis blandit placerat
-                            </Typography>
-
-                        </CardContent>
-                        <CardActions>
-                            <Box sx={{
-                                display: 'flex',
-                                flexDirection: 'row-reverse',
-                            }}>
-                                <Button size="small">Share</Button>
-                                <Button size="small">Learn More</Button>
-                            </Box>
-                        </CardActions>
-                    </Card>
                     <Grid container spacing={2} alignItems="center">
+                        <Grid item xs={12}>
+                            <Card>
+                                <Box align='left' sx={{ m: 2 }}>
+                                    <Grid container rowSpacing={2} sx={{ alignItems: 'center' }}>
+                                        <Grid item xs={10}>
+                                            <Typography variant='h5'>Prediction Reports</Typography>
+                                            <Typography variant='subtitle2' color='#bdbdbd'>Earthquake prediction reports for your location</Typography>
+                                        </Grid>
+                                        <Grid item xs={2} >
+                                            <FindInPageIcon sx={{ fontSize: '50px', color: '#d74554' }} />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <Typography variant='subtitle2'>In order to generate reports for your current location, you need to make sure that you have enough reports available. We recommend that you periodically generate reports or when you travel to another location.</Typography>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                            </Card>
+                        </Grid>
+
                         <Grid item xs={6}>
-                            <Card sx={{ minHeight: 200 }}>
+                            <Card sx={{ width: '100%', height: '100%', mb:5}}>
                                 <CardActionArea href="/earthquake/tohoku_earthquake">
                                     <CardContent>
-                                        <Typography gutterBottom>Tohoku Earthquake</Typography>
-                                        <Typography>Magnitude: 9.1</Typography>
+                                        <img src={HeartRed} height='100' width='100' />
+                                        <Typography variant='h5'>Survival Tips</Typography>
+                                        <Typography variant='subtitle2' color="#bdbdbd">Rules for saving your life in case of earthquake</Typography>
                                     </CardContent>
+                                    <Typography variant='subtitle2' color="#bdbdbd" alignSelf='flex-end'>Tap to View</Typography>
                                 </CardActionArea>
                             </Card>
                         </Grid>
                         <Grid item xs={6}>
-                            <Card sx={{ minHeight: 200 }}>
-                                <CardActionArea href="/earthquake/sumatra_earthquake">
+                            <Card sx={{ width: '100%', height: '100%', mb:5}}>
+                                <CardActionArea href="/earthquake/111">
                                     <CardContent>
-                                        <Typography gutterBottom>Sumatra Earthquake (2012)</Typography>
-                                        <Typography>Magnitude: 8.6</Typography>
+                                        <img src={FirstAidKit} height='100' width='100' />
+                                        <Typography variant='h5'>Survival Tools</Typography>
+                                        <Typography variant='subtitle2' color="#bdbdbd">Tools to help you after a devastating earthquake</Typography>
+
                                     </CardContent>
+                                    <Typography variant='subtitle2' color="#bdbdbd" alignSelf='flex-end'>Tap to Access</Typography>
                                 </CardActionArea>
+
                             </Card>
                         </Grid>
+
                     </Grid>
-                    <Divider sx={{ mt: 2, mb: 5 }} />
+
                 </Box>
             }
             {value === "Report" &&
