@@ -20,9 +20,9 @@ import StarIcon from '@mui/icons-material/Star';
 import EarthquakeImage from '../assets/earthquake1.jpg';
 import EarthquakeImage1 from '../assets/earthquake4.jpg';
 import EarthquakeImage2 from '../assets/earthquake2.jpg';
-import HeartRed from '../assets/heart_red.png';
+import HeartRed from '../assets/heart_red1.png';
 import HeartRedSvg from '../assets/heart_red.svg';
-import FirstAidKit from '../assets/firstaidkit2.png';
+import FirstAidKit from '../assets/firstaidkit3.png';
 import FirstAidKitSvg from '../assets/firstaidkit2.svg';
 
 
@@ -66,7 +66,7 @@ export default function home() {
                     mt: 5, mb: 2,
                 }}>
                     {earthquakeImages.map((earthquake, index) => (
-                        <Card sx={{ flexShrink: 0, maxWidth: '100%', borderRadius: 5, position: 'relative' }} key={index}>
+                        <Card sx={{  display: 'flex', flexShrink: 0, maxWidth: '100%', borderRadius: 5, position: 'relative' }} key={index}>
                             <CardMedia
                                 component="img"
                                 alt="earthquake"
@@ -82,7 +82,7 @@ export default function home() {
                                     color: 'white',
                                 }}
                             >
-                                <Typography variant="h5">Earthquake Prediction</Typography>
+                                <Typography variant="h5">Earthquake Monitoring</Typography>
                                 <Typography variant="body2">{earthquake.text}</Typography>
                             </Box>
                         </Card>
@@ -94,8 +94,8 @@ export default function home() {
                             <CardActionArea href="/prediction_reports">
                                 <Grid container rowSpacing={2} sx={{ justifyContent: 'center', alignItems: 'center' }}>
                                     <Grid item xs={10} sm='auto' md='auto' lg='auto' xl='auto'>
-                                        <Typography variant='h5' sx={{ fontWeight: 'bold' }}>Prediction Reports</Typography>
-                                        <Typography variant='subtitle2' color='#bdbdbd'>Earthquake prediction reports for your location</Typography>
+                                        <Typography variant='h5' sx={{ fontWeight: 'bold' }}>Earthquake Monitoring Reports</Typography>
+                                        <Typography variant='subtitle2' color='#bdbdbd'>Earthquake monitoring reports for your location</Typography>
 
                                     </Grid>
                                     <Grid item xs={2} sm='auto' md='auto' lg='auto' xl='auto'>

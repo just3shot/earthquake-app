@@ -26,7 +26,7 @@ export default function BottomNav({ page }) {
         <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
             <BottomNavigation value={page} showLabels>
                 <BottomNavigationAction value="dashboard" onClick={() => navigate('/dashboard')} label="Dashboard" icon={<DashboardIcon />} />
-                <BottomNavigationAction value="prediction_reports" onClick={() => navigate('/prediction_reports')} label="Prediction Reports" icon={<FindInPageIcon />} />
+                <BottomNavigationAction value="monitoring_reports" onClick={() => navigate('/monitoring_reports')} label="Monitoring Reports" icon={<FindInPageIcon />} />
                 <BottomNavigationAction value="crisis_reports" onClick={() => navigate('/crisis_reports')} label="Crisis Alert" icon={<CrisisAlertIcon />} />
             </BottomNavigation>
         </Paper>

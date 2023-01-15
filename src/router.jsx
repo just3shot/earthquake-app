@@ -4,7 +4,7 @@ import App from './App';
 import Dashboard from './pages/dashboard';
 import CrisisReport from './pages/crisisReport';
 import LarissaPage from './larissa_page'
-import PredictionReport from './pages/predictionReport';
+import MonitoringReport from './pages/monitoringReport';
 import SurvivalTips from './pages/survivalTips';
 import SurvivalTools from './pages/survivalTools';
 
@@ -14,7 +14,7 @@ export default function Router() {
         <Routes>
             <Route index element={<Navigate to='/dashboard'/>} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/prediction_reports" element={<PredictionReport />} />
+            <Route path="/monitoring_reports" element={<MonitoringReport />} />
             <Route path="/crisis_reports" element={<CrisisReport />} />
             <Route path="/larissa_page" element={<LarissaPage />} />
             <Route path="/survivaltips" element={<SurvivalTips />} />
