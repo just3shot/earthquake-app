@@ -61,12 +61,14 @@ export default function home() {
             <Box>
                 <Box sx={{
                     display: 'flex',
-                    overflowX: 'scroll',
                     width: { xs: '100%', sm: '510px', md: '510px' },
                     mt: 5, mb: 2,
-                }}>
+                    overflowX: 'scroll',
+                    scrollSnapType: 'x mandatory',
+                }}
+                >
                     {earthquakeImages.map((earthquake, index) => (
-                        <Card sx={{  display: 'flex', flexShrink: 0, maxWidth: '100%', borderRadius: 5, position: 'relative' }} key={index}>
+                        <Card sx={{  display: 'flex', flexShrink: 0, maxWidth: '100%', borderRadius: 5, position: 'relative', scrollSnapAlign: 'center' }} key={index}>
                             <CardMedia
                                 component="img"
                                 alt="earthquake"
@@ -91,7 +93,7 @@ export default function home() {
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <Card sx={{ borderRadius: 5, p: 2 }}>
-                            <CardActionArea href="/prediction_reports">
+                            <CardActionArea href="/monitoring_reports">
                                 <Grid container rowSpacing={2} sx={{ justifyContent: 'center', alignItems: 'center' }}>
                                     <Grid item xs={10} sm='auto' md='auto' lg='auto' xl='auto'>
                                         <Typography variant='h5' sx={{ fontWeight: 'bold' }}>Earthquake Monitoring Reports</Typography>
@@ -178,6 +180,6 @@ export default function home() {
             </Box>
 
             <BottomNav page='dashboard' />
-        </Container>
+        </Container >
     )
 }
