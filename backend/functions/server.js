@@ -51,7 +51,8 @@ exports.handler = async function(event, context) {
         console.log('Connected to the database');
 
         const result = await client.query('SELECT * FROM geophone_data ORDER BY date DESC, time DESC LIMIT 10');
-        console.log(result);
+        console.log("Hello!")
+        console.log(result.rows);
 
         return {
             statusCode: 200,
