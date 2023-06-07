@@ -22,7 +22,8 @@ export default function monitoringReport() {
 
     return (
         <Container>
-            <Typography>Monitoring Reports!</Typography>
+            <Typography>Monitoring Reports</Typography>
+
             <BottomNav page='monitoring_reports' />
         </Container>
     )
