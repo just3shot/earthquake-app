@@ -1,6 +1,8 @@
+import axios from 'axios'
+
 export const fetchData = async () => {
     try {
-        const response = await fetch('http://localhost:3000/api/data');
+        const response = await axios.get('/.netlify/functions/server');
         const jsonData = await response.json();
         return jsonData;
     } catch (error) {
@@ -8,4 +10,5 @@ export const fetchData = async () => {
         return null;
     }
 };
+
 
