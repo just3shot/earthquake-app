@@ -10,7 +10,7 @@ export default function survivalTips_listItem({ primaryText, secondaryText }) {
               <CheckCircleIcon sx={{ color: '#990000' }} />
           </ListItemIcon>
           <ListItemText
-              primary={primaryText}
+              primary={<strong>{primaryText}</strong>}
               secondary={secondaryText}
           />
       </ListItem>

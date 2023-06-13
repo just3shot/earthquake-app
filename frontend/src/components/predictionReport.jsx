@@ -23,7 +23,7 @@ export default function predictionReport({ countryName }) {
             const date = new Date();
             const formattedDate = date.toISOString().split('T')[0];
             const currentTimeString = date.toLocaleTimeString('en-US', {
-                hour12: false,
+                hourCycle: 'h23',
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit',
@@ -42,26 +42,31 @@ export default function predictionReport({ countryName }) {
     }, []);
 
     return (
-        <Container>
-            <Card sx={{ display: 'flex', maxHeight: '400px' }}>
-                <CardActionArea onClick={() => navigate(`/monitoring_reports/${countryName}`)}>
 
-                    <img src={MalaysiaMap} alt="Image" style={{ width: '100%', height: '50%', objectFit: 'cover' }} />
+        <Card sx={{ display: 'flex' }}>
+            <CardActionArea onClick={() => navigate(`/monitoring_reports/${countryName}`)}>
+                <Box sx={{ position: 'relative', textAlign: 'left', color: 'black' }}>
+                    <img src={MalaysiaMap} alt="Image" style={{ objectFit: 'cover', width: '100%', maxHeight: '400px' }} />
+                    
+                </Box>
 
-                    <CardContent>
-                        <Typography variant='h5' sx={{ display: 'flex', alignItems: 'center' }} component="div">
-                            <CalendarMonthIcon fontSize='large' sx={{ marginRight: '0.5em' }} />
-                            {currentTime.date}
-                        </Typography>
-                        <Typography variant='h6' sx={{ display: 'flex', alignItems: 'center' }} component="div">
-                            <AccessTimeIcon sx={{ marginRight: '0.5em' }} />
-                            {currentTime.time}
-                        </Typography>
-                    </CardContent>
+                <CardContent>
+                    <Typography variant='h5' sx={{ display: 'flex', alignItems: 'center' }} component="div">
+                        <LanguageIcon sx={{ marginRight: '0.5em' }} />
+                        {countryName}
+                    </Typography>
+                    <Typography variant='h5' sx={{ display: 'flex', alignItems: 'center' }} component="div">
+                        <CalendarMonthIcon sx={{ marginRight: '0.5em' }} />
+                        {currentTime.date}
+                    </Typography>
+                    <Typography variant='h6' sx={{ display: 'flex', alignItems: 'center' }} component="div">
+                        <AccessTimeIcon sx={{ marginRight: '0.5em' }} />
+                        {currentTime.time}
+                    </Typography>
+                </CardContent>
 
-                </CardActionArea>
-            </Card>
+            </CardActionArea>
+        </Card>
 
-        </Container>
     )
 }

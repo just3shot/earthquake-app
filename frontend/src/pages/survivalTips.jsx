@@ -29,12 +29,12 @@ export default function survivalTips() {
         <Grid item xs={12}>
           <Card>
             <Typography sx={{ pt: 2, pb: 1 }} variant="h6" component="div">
-              Before the Earthquake
+              <strong>Before the Earthquake</strong>
             </Typography>
             <Divider />
             <List dense>
               <STLI
-                primaryText="Be prepared to react"
+                primaryText= "Be prepared to react"
                 secondaryText="Know how to react so your response to a quake is automatic. If an earthquake struck right now, how would you protect yourself."
               />
               <STLI
@@ -48,7 +48,7 @@ export default function survivalTips() {
         <Grid item xs={12}>
           <Card>
             <Typography sx={{ pt: 2, pb: 1 }} variant="h6" component="div">
-              After the Earthquake
+              <strong>After the Earthquake</strong>
             </Typography>
             <Divider />
             <List dense>
@@ -59,16 +59,18 @@ export default function survivalTips() {
               <STLI
                 primaryText="If you are indoors during an earthquake, stay there"
                 secondaryText={
-                <ul>
-                    <li>Move away from windows, bookcases and large objects.</li>
-                    <li>Go to a safe location- under a desk, a table, or go along an interior wall.</li>
-                    <li>If you have no protection: drop to the floor, and cover your head and face</li>
-                    <li>Stay under cover until after the shaking stops, and you are sure that debris is no longer falling</li>
-                    <li>Do not stand in a doorway, as some previous safety guidelines recommended. A swinging door can cause injuries.</li>
-                    <li>In a crowded place, do not rush to the exit. More injuries are caused by panic than by earthquakes themselves.</li>
-                </ul>
+                  <Box sx={{ textAlign: 'left' }}>
+                    <ul style={{ listStyleType: 'disc', paddingLeft: '15px' }}>
+                      <li>Move away from windows, bookcases and large objects.</li>
+                      <li>Go to a safe location- under a desk, a table, or go along an interior wall.</li>
+                      <li>If you have no protection: drop to the floor, and cover your head and face</li>
+                      <li>Stay under cover until after the shaking stops, and you are sure that debris is no longer falling</li>
+                      <li>Do not stand in a doorway, as some previous safety guidelines recommended. A swinging door can cause injuries.</li>
+                      <li>In a crowded place, do not rush to the exit. More injuries are caused by panic than by earthquakes themselves.</li>
+                    </ul>
+                  </Box>
                 }
-                //"Move away from windows, bookcases and large objects. Go to a safe location- under a desk, a table, or go along an interior wall. "
+              //"Move away from windows, bookcases and large objects. Go to a safe location- under a desk, a table, or go along an interior wall. "
               />
             </List>
           </Card>

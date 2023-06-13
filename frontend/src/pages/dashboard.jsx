@@ -4,7 +4,7 @@ import { getDatabase, ref, set } from 'firebase/database';
 import { useNavigate } from "react-router-dom";
 
 import config from '../config';
-import { BottomNavigation, BottomNavigationAction, Container, Button, Box, Paper, AppBar, Typography, Card, CardActions, Grid, CardContent, Link, CardMedia, Divider, CardActionArea, List, ListItem, ListItemText, ImageListItem, ImageList, Menu, MenuItem, ListItemIcon, MenuList, Stack, IconButton, ListItemButton, Icon } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Container, Button, Box, Paper, AppBar, Typography, Card, CardActions, Grid, CardContent, Link, CardMedia, Divider, CardActionArea, List, ListItem, ListItemText, ImageListItem, ImageList, Menu, MenuItem, ListItemIcon, MenuList, Stack, IconButton, ListItemButton, Icon, useMediaQuery, useTheme } from '@mui/material';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ReportIcon from '@mui/icons-material/Report';
@@ -43,10 +43,9 @@ export default function home() {
         navigate(`/earthquake/${directory}`);
     }
 
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
+    const theme = useTheme();
+    const isXsOrSm = useMediaQuery(theme.breakpoints.down('sm'));
 
-    console.log(viewportWidth);
     return (
         <Container sx={{ display: 'flex', justifyContent: 'center', pb: '32px', backgroundColor: '#F2F3F5' }}>
             <AppBar>
@@ -58,8 +57,6 @@ export default function home() {
             <Box>
                 <Box sx={{
                     display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
                     width: { xs: '100%', sm: '510px', md: '510px' },
                     mt: 5, mb: 2,
                     overflowX: 'scroll',
@@ -67,18 +64,7 @@ export default function home() {
                 }}
                 >
                     {earthquakeImages.map((earthquake, index) => (
-                        <Card
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                flexShrink: 0, 
-                                maxWidth: '100%',
-                                borderRadius: 5,
-                                position: 'relative',
-                                scrollSnapAlign: 'center'
-                            }}
-                            key={index}
-                        >
+                        <Card sx={{ display: 'flex', flexShrink: 0, maxWidth: '100%', borderRadius: 5, position: 'relative', scrollSnapAlign: 'center' }} key={index}>
                             <CardMedia
                                 component="img"
                                 alt="earthquake"
@@ -124,11 +110,18 @@ export default function home() {
                     </Grid>
 
                     <Grid item xs={6}>
-                        <Card sx={{ display: 'flex', borderRadius: 5, mb: 2, alignItems: 'stretch' }}>
+                        <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%', borderRadius: 5, mb: 2, alignItems: 'stretch' }}>
                             <CardActionArea href="/survivaltips">
                                 <CardContent>
                                     <img src={HeartRed} height='100' width='100' />
-                                    <Typography variant='h5' sx={{ fontWeight: 'bold' }}>Survival Tips</Typography>
+                                    <Typography variant='h5' sx={{ fontWeight: 'bold' }}>
+                                        {isXsOrSm ?
+                                            <div>
+                                                Survival<br />Tips
+                                            </div> :
+                                            'Survival Tips'
+                                        }
+                                    </Typography>
                                     <Typography variant='subtitle2' color="#bdbdbd">Rules for saving your life in case of earthquake</Typography>
                                 </CardContent>
                                 <Typography variant='subtitle2' color="#bdbdbd" alignSelf='flex-end'>Tap to View</Typography>
@@ -137,11 +130,18 @@ export default function home() {
                     </Grid>
 
                     <Grid item xs={6}>
-                        <Card sx={{ display: 'flex', borderRadius: 5, mb: 2, alignItems: 'stretch' }}>
+                        <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%', borderRadius: 5, mb: 2, alignItems: 'stretch' }}>
                             <CardActionArea href="/survivaltools">
                                 <CardContent>
                                     <img src={FirstAidKit} height='100' width='100' />
-                                    <Typography variant='h5' sx={{ fontWeight: 'bold' }}>Survival Tools</Typography>
+                                    <Typography variant='h5' sx={{ fontWeight: 'bold' }}>
+                                        {isXsOrSm ?
+                                            <div>
+                                                Survival<br />Tools
+                                            </div> :
+                                            'Survival Tools'
+                                        }
+                                    </Typography>
                                     <Typography variant='subtitle2' color="#bdbdbd">Tools to help you after a devastating earthquake</Typography>
 
                                 </CardContent>
@@ -151,7 +151,7 @@ export default function home() {
                         </Card>
                     </Grid>
                 </Grid>
-                <Card sx={{ mb: 2, borderRadius: 5 }}>
+                <Card sx={{ mb: 2, mt: 2, borderRadius: 5 }}>
                     <List>
                         <ListItemButton>
                             <ListItemIcon>
