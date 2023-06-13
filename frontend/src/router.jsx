@@ -6,7 +6,7 @@ import CrisisReport from './pages/crisisReport';
 import MonitoringReport from './pages/monitoringReport';
 import SurvivalTips from './pages/survivalTips';
 import SurvivalTools from './pages/survivalTools';
-
+import MalaysiaReport from './pages/malaysiaReport';
 
 export default function Router() {
     return (
@@ -14,6 +14,7 @@ export default function Router() {
             <Route index element={<Navigate to='/dashboard'/>} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/monitoring_reports" element={<MonitoringReport />} />
+            <Route path="/monitoring_reports/malaysia" element={<MalaysiaReport />} />
             <Route path="/crisis_reports" element={<CrisisReport />} />
             <Route path="/survivaltips" element={<SurvivalTips />} />
             <Route path="/survivaltools" element={<SurvivalTools />} />

@@ -25,10 +25,7 @@ import HeartRedSvg from '../assets/heart_red.svg';
 import FirstAidKit from '../assets/firstaidkit3.png';
 import FirstAidKitSvg from '../assets/firstaidkit2.svg';
 
-
 import BottomNav from '../components/BottomNav';
-
-
 
 export default function home() {
 
@@ -51,16 +48,18 @@ export default function home() {
 
     console.log(viewportWidth);
     return (
-        <Container sx={{ backgroundColor: '#F2F3F5' }}>
+        <Container sx={{ display: 'flex', justifyContent: 'center', pb: '32px', backgroundColor: '#F2F3F5' }}>
             <AppBar>
-                <Typography variant="h5" sx={{ flexGrow: 1, padding: 1, backgroundColor: 'white', color: 'black' }}>
-                    {value}
+                <Typography variant="h5" sx={{ padding: 1, backgroundColor: 'white', color: 'black' }}>
+                    Dashboard
                 </Typography>
             </AppBar>
 
             <Box>
                 <Box sx={{
                     display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                     width: { xs: '100%', sm: '510px', md: '510px' },
                     mt: 5, mb: 2,
                     overflowX: 'scroll',
@@ -68,7 +67,18 @@ export default function home() {
                 }}
                 >
                     {earthquakeImages.map((earthquake, index) => (
-                        <Card sx={{  display: 'flex', flexShrink: 0, maxWidth: '100%', borderRadius: 5, position: 'relative', scrollSnapAlign: 'center' }} key={index}>
+                        <Card
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                flexShrink: 0, 
+                                maxWidth: '100%',
+                                borderRadius: 5,
+                                position: 'relative',
+                                scrollSnapAlign: 'center'
+                            }}
+                            key={index}
+                        >
                             <CardMedia
                                 component="img"
                                 alt="earthquake"

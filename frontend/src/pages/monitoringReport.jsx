@@ -1,53 +1,28 @@
 import React from 'react';
-import { Container, Typography, Grid, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material'
-import BottomNav from '../components/BottomNav'
+import { Container, Typography, Grid, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, AppBar } from '@mui/material'
 
-import { fetchData } from '../apis';
+import PredictionReport from '../components/predictionReport';
+import BottomNav from '../components/BottomNav';
 
 export default function monitoringReport() {
 
-    const [geophoneData, setGeophoneData] = React.useState();
-
-    React.useEffect(() => {
-        const fetchDataAsync = async () => {
-            try {
-                const result = await fetchData();
-                console.log(result)
-                setGeophoneData(result); // Set the fetched data in the state
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchDataAsync();
-    }, []);
-
     return (
-        <Container>
-            <Typography gutterBottom>Monitoring Reports</Typography>
+        <Container sx={{ display: 'flex', justifyContent: 'center', pb: '32px', backgroundColor: '#F2F3F5', width: '100%' }}>
+            <AppBar>
+                <Typography variant="h5" sx={{ padding: 1, backgroundColor: 'white', color: 'black' }}>
+                    Monitoring Reports
+                </Typography>
+            </AppBar>
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <PredictionReport countryName="Malaysia" />
+                </Grid>
 
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Date</TableCell>
-                            <TableCell>Time</TableCell>
-                            <TableCell>Geophone Value</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {geophoneData && geophoneData.map((row) => (
-                            <TableRow>
-                                <TableCell>{row.date}</TableCell>
-                                <TableCell>{row.time}</TableCell>
-                                <TableCell>{row.geophone_value}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            
-            <BottomNav page='monitoring_reports' />
+                <Grid item xs={12}>
+                    <PredictionReport countryName="Malaysia" />
+                </Grid>
+            </Grid>
+            <BottomNav page="monitoring_reports" />
         </Container>
     )
 }
