@@ -46,8 +46,7 @@ export default function predictionReport({ countryName }) {
         <Card sx={{ display: 'flex' }}>
             <CardActionArea onClick={() => navigate(`/monitoring_reports/${countryName}`)}>
                 <Box sx={{ position: 'relative', textAlign: 'left', color: 'black' }}>
-                    <img src={MalaysiaMap} alt="Image" style={{ objectFit: 'cover', width: '100%', maxHeight: '400px' }} />
-                    
+                    <img src={MalaysiaMap} alt="Image" style={{ objectFit: 'cover', width: '100%', maxHeight: '400px' }} />    
                 </Box>
 
                 <CardContent>

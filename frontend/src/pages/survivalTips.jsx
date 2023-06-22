@@ -6,6 +6,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import BottomNav from '../components/BottomNav'
 import STLI from '../components/survivalTips_listItem';
+import CustomAppBar from '../components/CustomAppBar';
 
 export default function survivalTips() {
 
@@ -13,18 +14,7 @@ export default function survivalTips() {
 
   return (
     <Container sx={{ display: 'flex', justifyContent: 'center', pt: '32px', pb: '32px', alignItems: 'center', backgroundColor: '#F2F3F5' }}>
-      <AppBar color="inherit">
-        <Box sx={{ position: 'absolute', left: 10 }}>
-          <IconButton onClick={() => navigate(-1)} >
-            <ArrowBackIcon />
-          </IconButton>
-        </Box>
-        <Box sx={{ flexGrow: 1, textAlign: 'center', padding: 1 }}>
-          <Typography variant="h5" >
-            Survival Tips
-          </Typography>
-        </Box>
-      </AppBar>
+      <CustomAppBar headerName={"Survival Tips"} haveBackButton={true} />
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Card>
@@ -34,7 +24,7 @@ export default function survivalTips() {
             <Divider />
             <List dense>
               <STLI
-                primaryText= "Be prepared to react"
+                primaryText="Be prepared to react"
                 secondaryText="Know how to react so your response to a quake is automatic. If an earthquake struck right now, how would you protect yourself."
               />
               <STLI

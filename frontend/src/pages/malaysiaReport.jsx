@@ -1,14 +1,15 @@
 import React from 'react'
-import { Container, Typography, Grid, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, AppBar } from '@mui/material'
+import { Container, Typography, Grid, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, AppBar, Snackbar, Alert, useTheme, useMediaQuery } from '@mui/material'
 import { fetchData } from '../apis';
 
 import BottomNav from '../components/BottomNav'
 import LineChart from '../components/LineChart';
+import CustomAppBar from '../components/CustomAppBar';
 
 export default function malaysiaReport() {
-    
-    const [geophoneData, setGeophoneData] = React.useState([]);
 
+    const [geophoneData, setGeophoneData] = React.useState([]);
+    const [openWarningSnackBar, setOpenWarningSnackBar] = React.useState(false);
     const [testData, setTestData] = React.useState({
         labels: geophoneData.map((data) => data.time),
         datasets: [{
@@ -16,6 +17,28 @@ export default function malaysiaReport() {
             data: geophoneData.map((data) => data.geophone_value),
         }]
     })
+
+    const theme = useTheme();
+    const isSmallViewport = useMediaQuery(theme.breakpoints.down('sm'));
+    const snackbarPosition = isSmallViewport ? { vertical: 'top', horizontal: 'center' } : { vertical: 'bottom', horizontal: 'left' };
+
+    const handleCloseWarningSnackBar = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpenWarningSnackBar(false);
+    };
+
+    function checkGeophoneWarning(geophoneData) {
+        for (let data of geophoneData) {
+            const geophoneValue = parseInt(data.geophone_value);
+            if (geophoneValue > 100) {
+                console.log("one of geophone value more than 100");
+                setOpenWarningSnackBar(true);
+                return;
+            }
+        }
+    }
 
     React.useEffect(() => {
         const fetchDataAsync = async () => {
@@ -30,7 +53,7 @@ export default function malaysiaReport() {
         };
 
         fetchDataAsync();
-
+        
     }, []);
 
     React.useEffect(() => {
@@ -41,15 +64,12 @@ export default function malaysiaReport() {
                 data: geophoneData.slice().reverse().map((data) => data.geophone_value),
             }],
         });
+        checkGeophoneWarning(geophoneData);
     }, [geophoneData]);
-    
+
     return (
-        <Container sx={{ backgroundColor: '#F2F3F5', display: 'flex', justifyContent: 'center' }}>
-            <AppBar>
-                <Typography variant="h5" sx={{ flexGrow: 1, padding: 1, backgroundColor: 'white', color: 'black' }}>
-                    Monitoring Reports
-                </Typography>
-            </AppBar>
+        <Container sx={{ backgroundColor: '#F2F3F5', display: 'flex', justifyContent: 'center', pt: '32px', pb: '32px' }}>
+            <CustomAppBar headerName={"Monitoring Reports"} haveBackButton={true} />
             <Grid>
                 <Grid item>
                     <TableContainer component={Paper}>
@@ -74,11 +94,21 @@ export default function malaysiaReport() {
                         </Table>
                     </TableContainer>
                 </Grid>
-                <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '100px' }}>
+                <Grid item sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <LineChart chartData={testData} />
                 </Grid>
             </Grid>
 
+            <Snackbar
+                open={openWarningSnackBar}
+                autoHideDuration={6000}
+                onClose={handleCloseWarningSnackBar}
+                anchorOrigin={snackbarPosition}
+            >
+                <Alert onClose={handleCloseWarningSnackBar} severity='warning'>
+                    EARTHQUAKE WARNING ACTIVATED!
+                </Alert>
+            </Snackbar>
             <BottomNav page="monitoring_reports" />
         </Container>
     )

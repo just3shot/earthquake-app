@@ -7,6 +7,10 @@ import MonitoringReport from './pages/monitoringReport';
 import SurvivalTips from './pages/survivalTips';
 import SurvivalTools from './pages/survivalTools';
 import MalaysiaReport from './pages/malaysiaReport';
+import Whistle from './pages/survival_tools/whistle';
+import VisualSOS from './pages/survival_tools/visualSOS';
+import Flashlight from './pages/survival_tools/flashlight';
+import FirstAid from './pages/survival_tools/firstAid';
 
 export default function Router() {
     return (
@@ -18,6 +22,10 @@ export default function Router() {
             <Route path="/crisis_reports" element={<CrisisReport />} />
             <Route path="/survivaltips" element={<SurvivalTips />} />
             <Route path="/survivaltools" element={<SurvivalTools />} />
+            <Route path="/survivaltools/whistle" element={<Whistle />} />
+            <Route path="/survivaltools/visual_SOS" element={<VisualSOS />} />
+            <Route path="/survivaltools/flashlight" element={<Flashlight />} />
+            <Route path="/survivaltools/first_aid" element={<FirstAid />} />
         </Routes>
     )
 }
