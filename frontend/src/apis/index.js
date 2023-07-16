@@ -10,4 +10,14 @@ export const fetchData = async () => {
     }
 };
 
+export const getNews = async () => {
+    try {
+        const response = await axios.get('/.netlify/functions/getNews');
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching data from News API', error);
+        return null;
+    }
+}
+
 

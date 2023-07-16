@@ -11,9 +11,8 @@ function LineChart({ chartData }) {
     };
 
     return (
-        <Box sx={{ minHeight: '500px'}}>
+        <Box sx={{ width: '100%', minHeight: '500px' }}>
             <Line data={chartData} options={options} />
-
         </Box>
     )
 }

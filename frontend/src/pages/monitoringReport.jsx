@@ -16,7 +16,7 @@ export default function monitoringReport() {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <PredictionReport countryName="Malaysia" />
+                    <PredictionReport countryName="Indonesia" />
                 </Grid>
             </Grid>
             <BottomNav page="monitoring_reports" />

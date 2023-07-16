@@ -3,7 +3,7 @@ import { BottomNavigation, BottomNavigationAction, Icon, Paper } from '@mui/mate
 import { useNavigate } from 'react-router-dom';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
+import FeedIcon from '@mui/icons-material/Feed';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 
 import HeartRed from '../assets/heart_red.png';
@@ -27,7 +27,7 @@ export default function BottomNav({ page }) {
             <BottomNavigation value={page} showLabels>
                 <BottomNavigationAction value="dashboard" onClick={() => navigate('/dashboard')} label="Dashboard" icon={<DashboardIcon />} />
                 <BottomNavigationAction value="monitoring_reports" onClick={() => navigate('/monitoring_reports')} label="Monitoring Reports" icon={<FindInPageIcon />} />
-                <BottomNavigationAction value="crisis_reports" onClick={() => navigate('/crisis_reports')} label="Crisis Alert" icon={<CrisisAlertIcon />} />
+                <BottomNavigationAction value="earthquake_news" onClick={() => navigate('/earthquake_news')} label="News" icon={<FeedIcon />} />
             </BottomNavigation>
         </Paper>
     )

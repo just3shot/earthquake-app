@@ -10,7 +10,7 @@ exports.handler = async function(event, context) {
         console.log('Connected to the database');
 
         const result = await client.query('SELECT * FROM geophone_data ORDER BY date DESC, time DESC LIMIT 10');
-        console.log("Hello!")
+        console.log("Hello! 222")
         console.log(result.rows);
 
         return {

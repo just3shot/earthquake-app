@@ -3,6 +3,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import MalaysiaMap from '../assets/malaysiaMap.png';
+import IndonesiaMap from '../assets/IndonesiaMap.png';
 
 import LanguageIcon from '@mui/icons-material/Language';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -18,10 +19,16 @@ export default function predictionReport({ countryName }) {
         time: '',
     });
 
+    const mapImageToUse = (countryName === "Indonesia") ? IndonesiaMap : MalaysiaMap;
+
     React.useEffect(() => {
         const interval = setInterval(() => {
             const date = new Date();
-            const formattedDate = date.toISOString().split('T')[0];
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const formattedDate = `${year}-${month}-${day}`;
+            
             const currentTimeString = date.toLocaleTimeString('en-US', {
                 hourCycle: 'h23',
                 hour: '2-digit',
@@ -46,7 +53,7 @@ export default function predictionReport({ countryName }) {
         <Card sx={{ display: 'flex' }}>
             <CardActionArea onClick={() => navigate(`/monitoring_reports/${countryName}`)}>
                 <Box sx={{ position: 'relative', textAlign: 'left', color: 'black' }}>
-                    <img src={MalaysiaMap} alt="Image" style={{ objectFit: 'cover', width: '100%', maxHeight: '400px' }} />    
+                    <img src={mapImageToUse} alt="Image" style={{ objectFit: 'cover', width: '100%', maxHeight: '400px' }} />    
                 </Box>
 
                 <CardContent>

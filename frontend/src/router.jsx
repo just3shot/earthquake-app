@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, Navigate } from "react-router-dom";
 import App from './App';
 import Dashboard from './pages/dashboard';
-import CrisisReport from './pages/crisisReport';
+import EarthQuakeNews from './pages/earthquakeNews';
 import MonitoringReport from './pages/monitoringReport';
 import SurvivalTips from './pages/survivalTips';
 import SurvivalTools from './pages/survivalTools';
@@ -19,7 +19,7 @@ export default function Router() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/monitoring_reports" element={<MonitoringReport />} />
             <Route path="/monitoring_reports/malaysia" element={<MalaysiaReport />} />
-            <Route path="/crisis_reports" element={<CrisisReport />} />
+            <Route path="/earthquake_news" element={<EarthQuakeNews />} />
             <Route path="/survivaltips" element={<SurvivalTips />} />
             <Route path="/survivaltools" element={<SurvivalTools />} />
             <Route path="/survivaltools/whistle" element={<Whistle />} />

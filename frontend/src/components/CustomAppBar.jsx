@@ -17,8 +17,8 @@ export default function CustomAppBar({ headerName, haveBackButton }) {
                     </IconButton>
                 </Box>
             }
-            <Box sx={{ padding: 1 }}>
-                <Typography variant="h5" sx={{ color: 'black' }}>
+            <Box sx={{ padding: 1, backgroundColor: '#990000' }}>
+                <Typography variant="h5" sx={{ color: 'white' }}>
                     {headerName}
                 </Typography>
             </Box>
